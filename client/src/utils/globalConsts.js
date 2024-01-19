@@ -3,7 +3,7 @@ export const pages=[
     id:0,
     label:"Home",
     route:"/"
-  },
+  }
 
 ]
 

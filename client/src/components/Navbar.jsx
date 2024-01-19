@@ -24,18 +24,20 @@ function Navbar(props) {
 
   const drawer = (
     <Box>
-    
+
       <List>
         {pages.map((page) => {
           return <ListItem key={page.id} disablePadding>
-            <Link to={page.route}><ListItemButton
+            <ListItemButton
+              component={Link}
+              to={page.route}
               sx={{
                 textAlign: 'center'
-              }}     
+              }}
             >
               <ListItemText primary={page.label} />
             </ListItemButton>
-            </Link>
+
           </ListItem>
         })}
       </List>
@@ -46,7 +48,7 @@ function Navbar(props) {
   return (
     <>
       <CssBaseline />
-      <Box sx={{ display: 'flex' ,border:'none'}}>
+      <Box sx={{ display: 'flex', border: 'none' }}>
         <AppBar
           position='sticky'
         >
@@ -69,33 +71,33 @@ function Navbar(props) {
             {/* </Typography> */}
           </Toolbar>
         </AppBar>
-      
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-          <Drawer
-            variant='temporary'
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-            sx={{
-              display: { xs: 'block', sm: 'none' },
-              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: `${drawerWidth}px` },
-            }}
-          >
-            {drawer}
-          </Drawer>
-          <Drawer
-            variant='persistent'
-            sx={{
-              display: { xs: 'none', sm: 'block' },
-              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: `${drawerWidth-100}px` },
-            }}
-            open
-          >
-            {drawer}
-          </Drawer>
-       
+
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Drawer
+          variant='temporary'
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: `${drawerWidth}px` },
+          }}
+        >
+          {drawer}
+        </Drawer>
+        <Drawer
+          variant='persistent'
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: `${drawerWidth - 100}px` },
+          }}
+          open
+        >
+          {drawer}
+        </Drawer>
+
       </Box>
     </>
   );
