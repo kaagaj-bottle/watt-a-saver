@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Logout from "../pages/Logout";
 import Home from "../pages/Home"
+import Root from "../pages/Root";
 const Routes = () => {
   const { token } = useAuth();
 
@@ -24,11 +25,11 @@ const Routes = () => {
   const routesForAuthenticatedOnly = [
     {
       path: "/",
-      element: <ProtectedRoute />, // Wrap the component in ProtectedRoute
+      element: <ProtectedRoute ><Root /></ProtectedRoute>, // Wrap the component in ProtectedRoute
       children: [
         {
-          path: "",
-          element: <div>User Home Page</div>,
+          index: true,
+          element: <div> This is the dashboard page</div>,
         },
         {
           path: "/profile",
