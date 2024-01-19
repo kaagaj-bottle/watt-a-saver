@@ -48,7 +48,7 @@ export default function SignUp() {
     signUpService(user).then(response => {
       console.log(user)
       console.log(response)
-      navigate("/login", { replace: true });
+      navigate("/", { replace: true });
 
     }).catch(err => {
       console.log(err)
