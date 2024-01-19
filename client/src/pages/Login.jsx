@@ -12,10 +12,12 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 import { useNavigate } from 'react-router-dom';
+import {Link as RouterLink} from 'react-router-dom'
 
 import { useAuth } from '../provider/authProvider';
-
+import { login as loginService } from '../services/login'
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -29,7 +31,6 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
@@ -39,13 +40,15 @@ export default function Login() {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    // const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
-    setToken("this is a test token");
-    navigate("/", { replace: true });
+    const data = new FormData(event.currentTarget);
+    const user = { email: data.get('email'), password: data.get('password') }
+    loginService(user).then(response => {
+      setToken(response.token);
+      navigate("/", { replace: true });
+
+    }).catch(err => {
+      console.log(err)
+    })
   };
 
   return (
@@ -64,7 +67,7 @@ export default function Login() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+           Log In 
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -106,7 +109,7 @@ export default function Login() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link component={RouterLink} to={"/signup"} variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

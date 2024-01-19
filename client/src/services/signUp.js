@@ -1,9 +1,8 @@
 import axios from "axios";
-const baseUrl = "/api/users";
+const baseUrl = "http://localhost:6500/api/v1/users";
 
-const signUp = async (userObj) => {
+export const signUp = async (userObj) => {
   const response = await axios.post(baseUrl, userObj);
   return response.data;
 };
 
-export default { signUp };

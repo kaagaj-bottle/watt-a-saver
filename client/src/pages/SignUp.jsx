@@ -13,6 +13,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
+
+import { signUp as signUpService } from '../services/signUp';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -26,18 +29,31 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+  const navigate = useNavigate()
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const user = {
+      firstName: data.get('firstName'),
+      lastName: data.get('lastName'),
       email: data.get('email'),
       password: data.get('password'),
-    });
+      passwordConfirm: data.get('passwordConfirm')
+    }
+
+    signUpService(user).then(response => {
+      console.log(user)
+      console.log(response)
+      navigate("/login", { replace: true });
+
+    }).catch(err => {
+      console.log(err)
+    })
+
   };
 
   return (
@@ -101,12 +117,19 @@ export default function SignUp() {
                   id="password"
                   autoComplete="new-password"
                 />
+
               </Grid>
               <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                <TextField
+                  required
+                  fullWidth
+                  name="passwordConfirm"
+                  label="Confirm Password"
+                  type="password"
+                  id="passwordConfirm"
+                  autoComplete="new-password"
                 />
+
               </Grid>
             </Grid>
             <Button
@@ -119,8 +142,8 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                <Link component={RouterLink} to="/" variant="body2">
+                  Already have an account? Log in
                 </Link>
               </Grid>
             </Grid>
