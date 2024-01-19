@@ -2,6 +2,8 @@ import React from 'react';
 import { Button, Typography, Container, AppBar, Toolbar, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { greenAccent } from '../utils/globalConsts';
+import Logo from '../assets/wattasaver.png'
+
 const Home = () => {
   return (
     <div>
@@ -16,7 +18,9 @@ const Home = () => {
           alignItems: 'center'
         }}>
         <Toolbar>
-          <Typography variant="h6">Watt-a-Saver</Typography>
+          <Typography variant="h6" sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <Box component="img" src={Logo} sx={{ width: "50px" }} />
+          </Typography>
         </Toolbar>
         <Box sx={{
           width: '200px',
@@ -46,7 +50,7 @@ const Home = () => {
       </AppBar>
       <Container>
         <Typography variant="h2" style={{ color: greenAccent, marginTop: '50px' }}>
-          Welcome to Our Website
+          Watt-a-Saver
         </Typography>
         <Typography variant="body1" style={{ marginTop: '20px' }}>
           We offer amazing products and services to make your life better.
