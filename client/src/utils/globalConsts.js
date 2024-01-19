@@ -1,8 +1,12 @@
 export const pages=[
   {
     id:0,
-    label:"Home",
+    label:"Dashboard",
     route:"/"
+  },{
+    id:1,
+    label:"Account",
+    route:"/account"
   }
 
 ]
