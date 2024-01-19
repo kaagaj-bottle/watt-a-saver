@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 20,
   },
-  secondName: {
+  lastName: {
     type: String,
     required: [true, "please tell us your second name"],
     minlength: 5,
