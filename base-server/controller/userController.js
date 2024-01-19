@@ -39,15 +39,15 @@ exports.signUp = catchAsync(async (req, res, next) => {
         400
       )
     );
-  const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
-  });
+  //   const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY, {
+  //     expiresIn: process.env.JWT_EXPIRES_IN,
+  //   });
   res.status(200).json({
     status: "success",
-    token,
-    // data: {
-    //   newUser,
-    // },
+
+    data: {
+      newUser,
+    },
   });
 });
 exports.createUser = catchAsync(async (req, res, next) => {
