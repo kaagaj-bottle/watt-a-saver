@@ -14,3 +14,5 @@ export const styleObject={
   marginTop:{sm:'2rem'},  
 }
 
+export const greenAccent='#4CAF50'
+
