@@ -5,6 +5,8 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
 import { styleObject } from '../utils/globalConsts';
+import PredictionChart from '../components/PredictionChart'
+import TopDevices from '../components/TopDevices'
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -15,19 +17,19 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Dashboard() {
   return (
-    <Box sx={{ styleObject }}>
+    <Box sx={{ styleObject, marginLeft: "10rem" }}>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          <Grid item xs={8}>
-            <Item>xs=8</Item>
+          <Grid item md={8} xs={12}>
+            <Item><PredictionChart /></Item>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item md={4} xs={12}>
+            <Item><TopDevices /></Item>
+          </Grid>
+          <Grid item md={6} xs={12}>
             <Item>xs=4</Item>
           </Grid>
-          <Grid item xs={4}>
-            <Item>xs=4</Item>
-          </Grid>
-          <Grid item xs={8}>
+          <Grid item md={6} xs={12}>
             <Item>xs=8</Item>
           </Grid>
         </Grid>

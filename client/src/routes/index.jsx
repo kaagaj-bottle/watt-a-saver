@@ -8,6 +8,7 @@ import Home from "../pages/Home"
 import Root from "../pages/Root";
 import Dashboard from "../pages/Dashboard";
 import Account from "../pages/Account"
+
 const Routes = () => {
   const { token } = useAuth();
 

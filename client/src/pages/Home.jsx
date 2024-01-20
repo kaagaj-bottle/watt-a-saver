@@ -3,7 +3,6 @@ import { Button, Typography, Container, AppBar, Toolbar, Box } from '@mui/materi
 import { Link } from 'react-router-dom';
 import { greenAccent } from '../utils/globalConsts';
 import Logo from '../assets/wattasaver.png'
-
 const Home = () => {
   return (
     <div>

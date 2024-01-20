@@ -12,7 +12,7 @@ const Logout = () => {
 
   setTimeout(() => {
     handleLogout();
-  }, 1 * 1000);
+  }, 300);
 
   return <>Logout Page</>;
 };
