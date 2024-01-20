@@ -11,9 +11,8 @@ export const ProtectedRoute = ({ children }) => {
   }
 
   // If authenticated, render the child routes
-  return(<>
+  return (<>
     {children}
     <Outlet />
-
   </>)
 };

@@ -27,10 +27,10 @@ const Routes = () => {
   const routesForAuthenticatedOnly = [
     {
       path: "/",
-      element: <ProtectedRoute ><Root /></ProtectedRoute>, // Wrap the component in ProtectedRoute
+      element: <ProtectedRoute><Root /></ProtectedRoute>, // Wrap the component in ProtectedRoute
       children: [
         {
-          index: true,
+          path: "",
           element: <Dashboard />,
         },
         {
